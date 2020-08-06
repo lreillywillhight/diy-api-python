@@ -23,3 +23,12 @@ def user_index_create():
   else:
     return jsonify(message='route coming soon')
 
+#gets all widgets as an array
+@app.route('/widgetList')
+  def get_all_widgets():
+    all_widgets = Widget.query.all()
+    results = []
+    for widget in all_widgets:
+      results.append(widget.as_dict())
+    return jsonify(results)
+
